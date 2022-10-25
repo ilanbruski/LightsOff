@@ -16,22 +16,26 @@ public class TP2_Bieres_BRUSKI {
     
     
     
-    public static void main(String[] args) {
+    public static void main(String[] args) {//première méthode qui sera lancée lors de l’exécution du programme
 
-        BouteilleBiere uneBiere = new BouteilleBiere ("Cuvee des trolls", 7.0 , "Bubuisson");
+        BouteilleBiere uneBiere = new BouteilleBiere ("Cuvee des trolls", 7.0 , "Bubuisson");//création d'un objet référencé par la variable uneBiere et affectation des valeurs aux attributs de l'objet
         uneBiere.lireEtiquette();
         
-        BouteilleBiere uneautreBiere = new BouteilleBiere ("Leffe", 6.6 , "Abbaye Leffe");
-        uneBiere.lireEtiquette();
+        BouteilleBiere uneautreBiere = new BouteilleBiere ("Leffe", 6.6 , "Abbaye Leffe");//l'objet bouteille de bière est désormais créé et il est référencée par la variable uneBiere
+        uneBiere.lireEtiquette();//appel de la methode lireEtiquette
         
-        BouteilleBiere premiereBiere = new BouteilleBiere ("La Chouffe",8.0,"Brasserie d'Achouffe" );
+        //procédure analogue pour les autres bières
+        
+        BouteilleBiere Chouffe = new BouteilleBiere ("La Chouffe",8.0,"Brasserie d'Achouffe" );
 
-        BouteilleBiere deuxiemeBiere = new BouteilleBiere ("Triple Moine",7.3,"Brasserie du Bocq" );
-
-        BouteilleBiere troisiemeBiere = new BouteilleBiere ("Pietra",6.5,"Brasserie Pietra" );
-        boolean r = troisiemeBiere.Decapsuler();
-
-
+        BouteilleBiere Moine = new BouteilleBiere ("Triple Moine",7.3,"Brasserie du Bocq" );
+        
+        BouteilleBiere Pietra = new BouteilleBiere ("Pietra",6.5,"Brasserie Pietra" );
+        boolean r = Pietra.Decapsuler(); // resultat du decapsulage de la bierre Pietra
+        
+        System.out.println(uneBiere) ; //on affiche les information d'une biere
+        System.out.println(Chouffe);
+        System.out.println(Moine);
     }
     
 }
