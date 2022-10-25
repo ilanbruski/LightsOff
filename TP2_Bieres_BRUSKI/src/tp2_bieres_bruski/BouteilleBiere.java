@@ -9,15 +9,12 @@ package tp2_bieres_bruski;
  * @author ilanb
  */
 
-
 public class BouteilleBiere {// création d'une classe nommée "Bouteille bière"
-
     
     String nom ;// le nom est une chaine
     double degreAlcool ;// le degrès est un double
     String brasserie ;// le nom est une chaine
     boolean ouverte ;// l'état (ouverte/fermée) est un booléen
-
     
 //     
 public BouteilleBiere(String p_nom, double p_degreAlcool, String p_brasserie) { //création d'un constructeur (il est appelé lors de la création d'objets de type BouteilleBiere)
@@ -27,14 +24,11 @@ public BouteilleBiere(String p_nom, double p_degreAlcool, String p_brasserie) { 
     ouverte = false;//les bieres sont stockées fermées
 }
 
-
-
 public void lireEtiquette() {// création d'une methode pour lire l'etiquette
     
     System.out.println("Bouteille de " + nom +" (" + degreAlcool +
     " degres) \nBrasserie : " + brasserie ) ;// affichage d'une phrase contenant toutes les infos
 }
-
 
 public boolean Decapsuler() {// création de la methode pour decapsuler
     if (ouverte == false){//si la bière est fermée
@@ -48,7 +42,8 @@ public boolean Decapsuler() {// création de la methode pour decapsuler
     }
 }
 
-public String ToString () {//Creation d'une methode particulière toString()
+@Override
+public String toString () {//Creation d'une methode particulière toString()
     String chaine_a_retourner;//initalisation de la variable 
     chaine_a_retourner = nom + " (" + degreAlcool + " degrés)Ouverte ? ";//on crée une phrase ui demande si une certaine bière est ouverte
     if (ouverte == true ) chaine_a_retourner += "oui" ; //donc on renvoit la réponse "oui" si la bière est ouverte
