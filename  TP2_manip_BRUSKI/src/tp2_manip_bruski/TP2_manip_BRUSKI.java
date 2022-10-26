@@ -43,15 +43,8 @@ public static void main(String[] args) {
 
 Moussaka Tableau [] = new Moussaka[10];//creation d'un tableau de 10 références de Moussaka
 //creation de 10 nouveaux objets de type moussaka
-    Moussaka grecque = new Moussaka ();
-    Moussaka turque = new Moussaka ();
-    Moussaka israelienne = new Moussaka ();
-    Moussaka russe = new Moussaka ();
-    Moussaka armenienne = new Moussaka ();
-    Moussaka auxpoivrons = new Moussaka ();
-    Moussaka alacourgette = new Moussaka ();
-    Moussaka aufromage = new Moussaka ();
-    Moussaka auxechalottes = new Moussaka ();
-    Moussaka aucumin = new Moussaka ();
+    for (int i = 0; i<10; i++) {//en creant une boucle for
+        Tableau[i]=new Moussaka();
+    }
 }
 }
