@@ -35,6 +35,23 @@ public static void main(String[] args) {
     System.out.println("nb de calories de Assiette1 : " + assiette1.nbCalories);
     System.out.println("nb de calories de Assiette2 : " + assiette2.nbCalories);
     //on remarque que les calories des assiettes 1 et 2 sont inversées par rapport à leur valeur initiale
+    
+    //les lignes "Moussaka assiette666 = assiette1 ;"
+    // et "Moussaka assiette667 = new Tartiflette() ;"
+    //sont incorrectes car on ne peut pas convertir de tartiflette ne moussaka
+    //une référence objet qui annonce référencer un type d'objet ne peut en referencer un autre seulement si ils sont dans la même classe
 
+Moussaka Tableau [] = new Moussaka[10];//creation d'un tableau de 10 références de Moussaka
+//creation de 10 nouveaux objets de type moussaka
+    Moussaka grecque = new Moussaka ();
+    Moussaka turque = new Moussaka ();
+    Moussaka israelienne = new Moussaka ();
+    Moussaka russe = new Moussaka ();
+    Moussaka armenienne = new Moussaka ();
+    Moussaka auxpoivrons = new Moussaka ();
+    Moussaka alacourgette = new Moussaka ();
+    Moussaka aufromage = new Moussaka ();
+    Moussaka auxechalottes = new Moussaka ();
+    Moussaka aucumin = new Moussaka ();
 }
 }
