@@ -11,4 +11,7 @@ package tp2_manip_bruski;
  */
 public class Moussaka {
     int nbCalories;//ajout d'un attribut nbCalories
+
 }
+
+
