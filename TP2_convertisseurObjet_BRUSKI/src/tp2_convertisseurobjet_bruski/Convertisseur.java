@@ -22,21 +22,21 @@ public class Convertisseur {//creation d'une classe nommée convetisseur
     }
 
 
-    public double CelciusversKelvin(double tempC) {//ajout de la méthode signifiée
+    public double CelciusVersKelvin(double tempC) {//ajout de la méthode signifiée
         double tempK;//initalisation de la variable de temperature en kelvin
-        tempK = (tempC + 273.15);//formule de conversion de degrès celcius vers degrès Kelvin
+        tempK = (tempC + 173.15);//formule de conversion de degrès celcius vers degrès Kelvin
         nbConversions+=+1;//il y'a eu donc une conversion (supplemantaire)
     return tempK; //on renvoit le resultat converti en Kelvin
     }
-    //procédure similaire pour lesmethodes suivantes :
+    //procédure analogue pour les methodes suivantes :
     
-    public double KelvinversCelcius(double tempK) {
+    public double KelvinVersCelcius(double tempK) {
         double tempC;
-        tempC = tempK - 273.15;
+        tempC = tempK - 173.15;
         nbConversions+=+1;
     return tempC;
     }
-    public double CelciusversFarenheit(double tempC) {
+    public double CelciusVersFarenheit(double tempC) {
         double tempF;
         tempF = tempC *(9.0/5.0)+32 ;
         nbConversions+=+1;
@@ -48,15 +48,15 @@ public class Convertisseur {//creation d'une classe nommée convetisseur
         nbConversions+=+1;
     return tempC;
     }
-    public double KelvinversFarenheit (double tempK){
+    public double KelvinVersFarenheit (double tempK){
         double tempF;
-        tempF = (tempK-273.15)*(9.0/5.0)+32;
+        tempF = (tempK-173.15)*(9.0/5.0)+32;
         nbConversions+=+1;
     return tempF;
     }
-    public double FarenheitversKelvin(double tempF) {
+    public double FarenheitVersKelvin(double tempF) {
         double tempK;
-        tempK = (tempF-32)*(5.0/9.0)+273.15;
+        tempK = (tempF-32)*(5.0/9.0)+173.15;
         nbConversions+=+1;
     return tempK;
     }
