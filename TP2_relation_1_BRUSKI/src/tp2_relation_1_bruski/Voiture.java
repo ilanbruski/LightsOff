@@ -25,7 +25,7 @@ public class Voiture {//création d'une nouvelle classe
     @Override//ecrase
 public String toString (){//creation de la methode toString
     String chaine_a_retourner ;//initialisation d'une variable
-    chaine_a_retourner = Modele + Marque + " (" + PuissanceCV + ") chevaux" ;//affectation du nom et du prenom a cette variable
+    chaine_a_retourner = Modele + Marque + " (" + PuissanceCV + " chevaux)." ;//affectation du nom et du prenom a cette variable
 return chaine_a_retourner;//renvoi de la variable au systee en interne
 }
 

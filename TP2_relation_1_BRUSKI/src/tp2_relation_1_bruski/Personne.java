@@ -30,4 +30,26 @@ public String toString (){//creation de la methode toString
 return chaine_a_retourner;//renvoi de la variable au systee en interne
 }
 
+//on ajout la methode ajouter_voiture à la classe Personne pour automatiser un peu
+    public boolean ajouter_voiture( Voiture voiture_a_ajouter) {
+        if (voiture_a_ajouter.Proprietaire != null) { //si la voiture possède déjà un propriétaire
+            System.out.println(voiture_a_ajouter + "déjà prise") ;//on affiche qu'elle est déja prise
+            return false ;// puis on renvoit faux en interne
+
+        }
+
+        else {//dans le cas où la voiture n'a pas été volée
+            if (this.nbVoitures == 3){// si le garage est plein
+                System.out.println(this.prenom + this.nom + "a un garage plein car il possède 3 voitures") ;//on affiche à l'utilisateur que le garage est plein
+                return false ;//on ne peut rien faire et on renvoit une nouvele fois faux
+            }
+
+            else {//sinon, l'ajout est possible :
+                this.liste_voitures[nbVoitures] = voiture_a_ajouter ;//on incremente le nombre de voitures possédées par le propriétaire
+                nbVoitures += 1 ; //son nombre de voitures augmente de 1
+                voiture_a_ajouter.Proprietaire = this  ;//on indique a la voiture le nouveau propriétaire
+                return true ;//on rentourne enfin true
+                }
+        }
+    }
 }
