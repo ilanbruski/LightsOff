@@ -23,7 +23,20 @@ Personne bob = new Personne("Bobby", "Sixkiller");
 Personne reno = new Personne("Reno", "Raines");
 System.out.println("liste des voitures disponibles "+ uneClio + "\n" + uneAutreClio + "\n" + une2008 + "\n" + uneMicra ) ;
 
- ;
+bob.liste_voitures[0] = uneClio ; //ajout de la relation "Bob est propriétaire d'une Clio"
+bob.liste_voitures[1] = uneAutreClio ; //ajout d'une seonde voiture à Bob
+bob.nbVoitures = 2 ;
+uneClio.Proprietaire = bob ;
+une2008.Proprietaire = bob ;
+System.out.println("la premiere voiture de Bob est " + bob.liste_voitures[0] + ", il en a acheté une deuxieme : une " + bob.liste_voitures[1]) ;//pour acceder aux voitures de bob
+   
+//ajout de deux autres voitures à reno :
+reno.liste_voitures[0] = une2008;
+reno.liste_voitures[1] = uneMicra;
+reno.nbVoitures = 2 ; 
+une2008.Proprietaire = reno ;
+uneMicra.Proprietaire = reno ;
+System.out.println("la premiere voiture de Reno est " + reno.liste_voitures[0] + ", il en a acheté une deuxieme : une " + reno.liste_voitures[1]) ;//pour acceder aux voitures de reno
     }
     
 }
