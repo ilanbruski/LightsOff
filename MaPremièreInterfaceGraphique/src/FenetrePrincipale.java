@@ -14,6 +14,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      */
     public FenetrePrincipale() {
         initComponents();
+        jLabel1.setText("Nouveau texte");
     }
 
     /**
