@@ -25,9 +25,6 @@ public class Arme {//classe arme
 public String toString(){//pour pouvoir visualiser les attributs
     String chaine_a_retourner;//initalisation d'une variable pour renvoyer les infos
     chaine_a_retourner = "L'arme " + nom + " possède un niveau d'attaque de " + niveau_attaque +".";
-    if ((niveau_attaque <0)||(niveau_attaque>100)){//condition pour que l
-    chaine_a_retourner = "Erreur : le niveau d'attaque doit être compris entre 0 et 100";//dans
-    }
     System.out.println(chaine_a_retourner);//affichage de la reponse 
     return chaine_a_retourner ; //on retourne en interne la réponse
 }
