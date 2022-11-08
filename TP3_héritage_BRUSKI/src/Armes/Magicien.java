@@ -8,6 +8,6 @@ package Armes;
  *
  * @author ilanb
  */
-public class Magicien extends Personnage {//heritant de personnage
+public class Magicien extends Personnage(){//heritant de personnage
     
 }
