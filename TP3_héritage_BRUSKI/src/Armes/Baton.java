@@ -2,13 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package tp3_héritage_bruski;
+package Armes;
+
+import Armes.Arme;
 
 /**
  *
  * @author ilanb
  */
-class Baton extends Arme {//classe qui herite de arme
+public class Baton extends Arme {//classe qui herite de arme
     int age;
     
     public Baton(String nom, int niveau_attaque, int a){//constructeur

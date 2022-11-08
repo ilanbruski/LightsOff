@@ -1,4 +1,8 @@
-package tp3_héritage_bruski;
+package Armes;
+
+
+
+import Armes.Arme;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -9,7 +13,7 @@ package tp3_héritage_bruski;
  *
  * @author ilanb
  */
-class Epée extends Arme {//classe qui herite de arme
+public class Epée extends Arme {//classe qui herite de arme
     int indice_finesse;
     
     public Epée(String nom, int niveau_attaque, int a){//constructeur
