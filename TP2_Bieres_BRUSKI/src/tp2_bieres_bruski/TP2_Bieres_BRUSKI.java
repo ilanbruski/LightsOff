@@ -18,7 +18,7 @@ public class TP2_Bieres_BRUSKI {
     
     public static void main(String[] args) {//première méthode qui sera lancée lors de l’exécution du programme
 
-        BouteilleBiere uneBiere = new BouteilleBiere ("Cuvee des trolls", 7.0 , "Bubuisson");//création d'un objet référencé par la variable uneBiere et affectation des valeurs aux attributs de l'objet
+        BouteilleBiere uneBiere = new BouteilleBiere ("Cuvee des trolls", 7.0 , "Dubuisson");//création d'un objet référencé par la variable uneBiere et affectation des valeurs aux attributs de l'objet
         uneBiere.lireEtiquette();
         
         BouteilleBiere uneautreBiere = new BouteilleBiere ("Leffe", 6.6 , "Abbaye Leffe");//l'objet bouteille de bière est désormais créé et il est référencée par la variable uneBiere

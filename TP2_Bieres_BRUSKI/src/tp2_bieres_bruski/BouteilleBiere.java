@@ -45,7 +45,7 @@ public boolean Decapsuler() {// création de la methode pour decapsuler
 @Override
 public String toString () {//Creation d'une methode particulière toString()
     String chaine_a_retourner;//initalisation de la variable 
-    chaine_a_retourner = nom + " (" + degreAlcool + " degrés)Ouverte ? ";//on crée une phrase ui demande si une certaine bière est ouverte
+    chaine_a_retourner = nom + " (" + degreAlcool + " degrés)Ouverte ? ";//on crée une phrase qui demande si une certaine bière est ouverte
     if (ouverte == true ) chaine_a_retourner += "oui" ; //donc on renvoit la réponse "oui" si la bière est ouverte
     else chaine_a_retourner += "non" ;// sinon, on renvoit bien entendu "non"
     return chaine_a_retourner ;//on retourne en interne la réponse
