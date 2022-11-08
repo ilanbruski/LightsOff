@@ -2,19 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Armes;
+package Personnages;
 
 /**
  *
  * @author ilanb
  */
-public class Personnage {
+public class Personnage {//classe
     String nom;
     int niveau_de_vie;
     
     
     
-    public Personnage (String unnom,int unniveau_de_vie){
+    public Personnage (String unnom,int unniveau_de_vie){//constructeur
         nom = unnom;
         niveau_de_vie = unniveau_de_vie;
     }

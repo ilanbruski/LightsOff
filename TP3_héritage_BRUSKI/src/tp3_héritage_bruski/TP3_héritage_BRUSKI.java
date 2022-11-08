@@ -4,11 +4,15 @@
  */
 package tp3_héritage_bruski;
 
+import Personnages.Personnage;
+import Personnages.Magicien;
+import Personnages.Guerrier;
 import Armes.Epée;
 import Armes.Baton;
 import Armes.Arme;
 
 import Armes.*;//pour utiliser ces classes dans un autre package
+import Personnages.*;
 import java.util.ArrayList;
 
 /**
@@ -44,7 +48,26 @@ public class TP3_héritage_BRUSKI {
     for (int i=0; i<longueur; i++){
     System.out.println(n_Arme.get(i)+",");//on affiche la taille de la liste
     
+    //création de 4 nouveaux personnages
+    Magicien Gandalf = new Magicien ("Gandalf",65,true);
+    Magicien Garcimore = new Magicien ("Garcimore",44,false);
+    Guerrier Conan = new Guerrier ("Conan",78,false);
+    Guerrier Lanister = new Guerrier ("Lanister",45,true);
+    
+    //creation d'un tableau dynamique
+    ArrayList<Personnage>n_Personnage=new ArrayList<Personnage>();//on crée un tableau liste
+    n_Personnage.add(Gandalf);
+    n_Personnage.add(Garcimore);
+    n_Personnage.add(Conan);
+    n_Personnage.add(Lanister);
+    
+    int distance = n_Personnage.size();
+    int size=taille-1;
+    for (int k=0; k<size; k++){
+    System.out.println(n_Personnage.get(k)+",");//on affiche la taille de la liste
     }
-}
+    
+    }
+    }
 }
 
