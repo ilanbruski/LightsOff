@@ -66,7 +66,6 @@ public class TP3_héritage_BRUSKI {
     for (int k=0; k<size; k++){
     System.out.println(n_Personnage.get(k)+",");//on affiche la taille de la liste
     }
-    
     }
     }
 }

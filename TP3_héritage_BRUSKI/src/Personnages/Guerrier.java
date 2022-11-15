@@ -20,4 +20,5 @@ public class Guerrier extends Personnage {//heritant de personnage
             a_cheval = false;    
         }
     }
+
 }
