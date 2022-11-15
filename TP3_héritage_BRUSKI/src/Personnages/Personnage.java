@@ -13,28 +13,23 @@ import java.util.ArrayList;
 public class Personnage {//classe
     String nom;
     int niveau_de_vie;
-    Arme ajouter ;
-    
+    Arme arme_p ; 
     //creation d'un tableau dynamique pour que les personnages stockent les armes
     ArrayList<Arme>tab2 = new ArrayList<Arme>();
     
     
     //création d'une methode pour ajouter une arme
     public void Ajouter_Arme (Arme unearme){
-        ajouter = unearme ;
-        int taille = tab2.size();
-        if (taille>5){
+        if (tab2.size()<5){
         tab2.add(unearme);
-        tab2.add (unearme);   
         }
     }
     
     public Personnage (String unnom,int unniveau_de_vie){//constructeur
         nom = unnom;
         niveau_de_vie = unniveau_de_vie;
+        arme_p = null;   
     }
-    
-    
     
 @Override //ecraser    
 public String toString(){//pour pouvoir visualiser les attributs
