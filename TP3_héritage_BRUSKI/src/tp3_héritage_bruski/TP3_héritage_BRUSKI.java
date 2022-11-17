@@ -79,17 +79,6 @@ public class TP3_héritage_BRUSKI {
        System.out.println(Napoléon);
        System.out.println(Dumbledore);
 
-
-
-       Magicien1.ajoutearme(Baton2);
-
-       Magicien1.ajoutearme(Epée2);
-
-       Guerrier1.ajoutearme(Epée1);
-
-       Guerrier1.ajoutearme(Epée3);
-
-       Guerrier1.ajoutearme(Baton3);
     //creation d'un tableau dynamique
     ArrayList<Personnage>n_Personnage=new ArrayList<Personnage>();//on crée un tableau liste
     n_Personnage.add(Gandalf);
