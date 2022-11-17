@@ -54,7 +54,38 @@ public class TP3_héritage_BRUSKI {
     Magicien Garcimore = new Magicien ("Garcimore",44,false);
     Guerrier Conan = new Guerrier ("Conan",78,false);
     Guerrier Lanister = new Guerrier ("Lanister",45,true);
-    
+    //création d'un guerrier ,d'un magicien, de 3 batons et 3 épées
+    Magicien Dumbledore = new Magicien("Dumbledore", 87, true);
+    Guerrier Napoléon = new Guerrier("Napoléon", 91, false);
+    Baton Baguette = new Baton ("Baguette", 7, 11);
+    Baton Curedent = new Baton ("Curedent", 4, 2);
+    Baton Paille = new Baton ("Paille", 1, 11);
+    Epée Tranchante = new Epée ("Tranchante", 45, 5);
+    Epée Coupante = new Epée ("Coupante", 20, 4);
+    Epée Frappante = new Epée ("Frappante", 32, 7);
+
+    //on ajoute 2 épées et 1 baton au guerrier, puis on l'équipe (analogie pour le magicien)
+       Napoléon.Ajouter_Arme(Tranchante);
+       Napoléon.Ajouter_Arme(Coupante);
+       Napoléon.Ajouter_Arme(Curedent);
+       Napoléon.equiperarme("Excalibur");
+       
+       Dumbledore.Ajouter_Arme(Baguette);
+       Dumbledore.Ajouter_Arme(Paille);
+       Dumbledore.Ajouter_Arme(Frappante);
+       
+
+
+
+       Magicien1.ajoutearme(Baton2);
+
+       Magicien1.ajoutearme(Epée2);
+
+       Guerrier1.ajoutearme(Epée1);
+
+       Guerrier1.ajoutearme(Epée3);
+
+       Guerrier1.ajoutearme(Baton3);
     //creation d'un tableau dynamique
     ArrayList<Personnage>n_Personnage=new ArrayList<Personnage>();//on crée un tableau liste
     n_Personnage.add(Gandalf);
