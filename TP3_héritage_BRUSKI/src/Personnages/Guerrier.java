@@ -21,4 +21,4 @@ public class Guerrier extends Personnage {//heritant de personnage
         }
     }
 
-}
+} 

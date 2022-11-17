@@ -19,6 +19,11 @@ public class Arme {//classe arme
         niveau_attaque = unniveau_attaque ;
     }
     
+    //création de la méthode pour pouvoir l'utiliser dans la classe personnage
+        public String getNom() {
+        return nom;
+    }
+    
     
     
 @Override //ecraser    
