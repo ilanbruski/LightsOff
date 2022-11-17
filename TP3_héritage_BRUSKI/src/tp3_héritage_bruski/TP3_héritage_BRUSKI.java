@@ -74,6 +74,10 @@ public class TP3_héritage_BRUSKI {
        Dumbledore.Ajouter_Arme(Paille);
        Dumbledore.Ajouter_Arme(Frappante);
        
+       
+       //affichage de leur caractéristiques
+       System.out.println(Napoléon);
+       System.out.println(Dumbledore);
 
 
 
