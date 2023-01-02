@@ -46,3 +46,20 @@ public class LightsOff extends JFrame implements ActionListener //on crée la cl
 		JPanel buttonPanel = new JPanel();				//un nouveau panneau pour contenir tous les boutons du plateau de jeu.
 		gameButtons = new JButton[5][5];				//crée un nouveau tableau bidimensionnel qui contiendra 25 boutons.
 		buttonPanel.setLayout(new GridLayout(5,5));		//définit la disposition des boutons.					
+		
+		for(int i = 0; i<5; i++){						//ces deux boucles ajouteront chaque bouton dans le tableau à deux dimensions.
+                
+			for(int j = 0; j<5; j++){
+				int random = (int)(Math.random()*3);	//configure une variable pour un nombre aléatoire, de sorte que les lumières (boutons) seront allumées au hasard.
+				JButton button = new JButton();			//crée un nouvel objet JButton.
+				gameButtons[i][j] = button;				//ajoute le bouton au tableau.
+				button.setName(""+i+j);					//définit le nom de chaque bouton en conséquence où ils apparaissent sur le plateau de jeu.
+				button.setBackground(Color.BLACK);		//définit chaque bouton sur noir, désactivé.
+				if(random == 2)							//utilise la variable aléatoire pour changer la couleur du bouton en jaune, activé.
+				{
+					backgroundColor(button);
+				}
+				button.addActionListener(this);			//ajoute un actionlistener à chaque bouton.
+				buttonPanel.add(button);				//ajoute le bouton au buttonPanel.
+			}
+		}
