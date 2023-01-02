@@ -148,3 +148,17 @@ public class LightsOff extends JFrame implements ActionListener{ //on crée la c
 		}
 		isWon();										//la méthode isWon est appelée pour voir si la partie est gagnée ou non, c'est-à-dire si toutes les lumières sont éteintes.
 	}
+	
+	//Modifie la couleur du bouton envoyé en tant que paramètre en jaune ou en noir, selon la couleur actuelle du paramètre. 
+	//@param b JButton object.
+	private void backgroundColor(JButton b)
+	{
+		if(b.getBackground()==Color.BLACK)			//le bouton b est noir, puis il est changé en jaune, sinon il est
+		{											//changé en noir.
+			b.setBackground(Color.YELLOW);
+		}
+		else
+		{
+			b.setBackground(Color.BLACK);
+		}
+	}
