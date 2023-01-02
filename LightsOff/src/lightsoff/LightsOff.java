@@ -82,7 +82,6 @@ public class LightsOff extends JFrame implements ActionListener{ //on crée la c
 		setContentPane(mainPanel);						//définit le volet de contenu du cadre.
 	}
         
-        
 	//cette methode sera utilisée dès qu'un bouton est cliqué
 	@Override
 	public void actionPerformed(ActionEvent e) 
@@ -107,3 +106,18 @@ public class LightsOff extends JFrame implements ActionListener{ //on crée la c
 			manualSetting(button);
 			return;
 		}
+		char colChar = location.charAt(0);				//obtient le caractère char à la position 0 du nom du bouton.
+		char rowChar = location.charAt(1);				//obtient le caractère char en position 1 du nom du bouton.
+		int col = Character.getNumericValue(colChar);	//cet int converti à partir du char de pos 0 sera utilisé comme indicateur de colonne.
+		int row = Character.getNumericValue(rowChar);	//cet int converti à partir du char de pos 0 sera utilisé comme indicateur de ligne.
+		
+		//boutons temporaires pour les emplacements adjacents à côté du bouton sélectionné.
+		JButton tempSelected = new JButton();			//un bouton temp pour le bouton sélectionné
+		JButton tempTop = new JButton();				//un bouton temporaire pour le bouton au-dessus du bouton sélectionné
+		JButton tempLeft = new JButton();				//un bouton temp pour le bouton à gauche du bouton sélectionné
+		JButton tempRight = new JButton();				//un bouton temp pour le bouton à droite du bouton sélectionné
+		JButton tempBottom = new JButton();				//un bouton temp pour le bouton sous le bouton sélectionné
+		
+		tempSelected = gameButtons[col][row];			//obtient le bouton actuel sélectionné et le stocke dans la temp.
+		backgroundColor(tempSelected);					//appelle la méthode backgroundColor pour changer la couleur du bouton.
+		
