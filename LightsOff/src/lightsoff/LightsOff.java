@@ -73,11 +73,37 @@ public class LightsOff extends JFrame implements ActionListener{ //on crée la c
 		mainPanel.add(controls,"South");				//ajoute les contrôles JPanel au mainPanel.
 		
 		//Labels
-		JPanel label = new JPanel();					//crée un nouveau JPanel pour les étiquettes à ajouter au plateau de jeu.
-		label.setLayout(new GridLayout(1,1));			//définit la disposition des étiquettes JPanel.
+		JPanel label = new JPanel();					//crée un nouveau JPanel pour les labels à ajouter au plateau de jeu.
+		label.setLayout(new GridLayout(1,1));			//définit la disposition des labels JPanel.
 		label.add(wins = new JLabel());					//ajoute le label wins au label JPanel.
 		wins.setText("Wins: " + winCount);				//définit le texte de l'étiquette de victoires.
 		mainPanel.add(label, "North");					//le label JPanel est ajouté au mainPanel.
 		
 		setContentPane(mainPanel);						//définit le volet de contenu du cadre.
 	}
+        
+        
+	//cette methode sera utilisée dès qu'un bouton est cliqué
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+		JButton button = (JButton)e.getSource();		//obtient le bouton actuel qui a été cliqué.
+		String location = button.getName();				//obtient le nom du bouton actuel
+		if(location.equals("Random")){					//si le bouton "Aléatoire" est cliqué, alors la méthode aléatoire est appelée.
+			randomSetting();
+			return;
+		}
+		if(location.equals("Manual Exit")){				//si le bouton "Quitter le mode manuel" est cliqué, le nom et le texte sont modifiés et le jeu revient à un état normal.
+			manual.setText("Enter Manual Setup");
+			manual.setName("Manual");
+			return;
+		}
+		if(location.equals("Manual")){					//si le bouton "Enter Manual Setup" est cliqué, le nom et le texte sont modifiés.
+			manual.setText("Exit Manual Mode");
+			manual.setName("Manual Exit");
+			return;
+		}
+		if(manual.getName().equals("Manual Exit")){		//pendant que le nom du bouton manuel est défini, comme "Manual Exit", le réglage manuel sera appelé sur le bouton actuel. 
+			manualSetting(button);
+			return;
+		}
