@@ -63,3 +63,14 @@ public class LightsOff extends JFrame implements ActionListener //on crée la cl
 				buttonPanel.add(button);				//ajoute le bouton au buttonPanel.
 			}
 		}
+		
+		mainPanel.add(buttonPanel, "Center");			//ajoute le buttonPanel au mainPanel.
+		
+		//Crée les boutons utilisés pour les différents contrôles.
+		JButton random = new JButton("Randomize");		//Crée un nouveau bouton qui sera utilisé pour que les lumières aléatoires s'allument ou s'éteignent.
+		random.setName("Random");						//définit le nom du bouton Randomizen.
+		random.addActionListener(this);					//ajoute un actionlistener.
+		manual = new JButton("Enter Manual Setup");		//Crée un nouveau bouton qui sera utilisé par l'utilisateur pour changer manuellement le tableau.
+		manual.setName("Manual");						//définit le nom du bouton de configuration manuelle.
+		manual.addActionListener(this);					//ajoute un actionlistener.
+		
