@@ -121,3 +121,30 @@ public class LightsOff extends JFrame implements ActionListener{ //on crée la c
 		tempSelected = gameButtons[col][row];			//obtient le bouton actuel sélectionné et le stocke dans la temp.
 		backgroundColor(tempSelected);					//appelle la méthode backgroundColor pour changer la couleur du bouton.
 		
+		//chaque bouton est tenté, mais s'il dépasse le tableau, il est intercepté et rien n'est fait.
+		try {
+			tempTop = gameButtons[col-1][row];			//récupère le bouton qui se trouve au-dessus du bouton sélectionné et le stocke dans temp.
+			backgroundColor(tempTop);					//appelle la méthode backgroundColor pour changer la couleur du bouton.
+		}
+		catch(ArrayIndexOutOfBoundsException i){	
+		}
+		try{
+			tempLeft = gameButtons[col][row-1];			//récupère le bouton qui reste au bouton sélectionné et le stocke dans temp.
+			backgroundColor(tempLeft);					//appelle la méthode backgroundColor pour changer la couleur du bouton.
+		}
+		catch(ArrayIndexOutOfBoundsException i){	
+		}
+		try{
+			tempRight = gameButtons[col][row+1];		//obtenir le bouton qui correspond au bouton sélectionné et le stocker dans temp.
+			backgroundColor(tempRight);					//appelle la méthode backgroundColor pour changer la couleur du bouton.
+		}
+		catch(ArrayIndexOutOfBoundsException i){	
+		}
+		try{
+			tempBottom = gameButtons[col+1][row];		//récupère le bouton qui se trouve sous le bouton sélectionné et le stocke dans temp.
+			backgroundColor(tempBottom);				//appelle la méthode backgroundColor pour changer la couleur du bouton.
+		}
+		catch(ArrayIndexOutOfBoundsException i){	
+		}
+		isWon();										//la méthode isWon est appelée pour voir si la partie est gagnée ou non, c'est-à-dire si toutes les lumières sont éteintes.
+	}
