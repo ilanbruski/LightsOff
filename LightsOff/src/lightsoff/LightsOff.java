@@ -179,3 +179,22 @@ public class LightsOff extends JFrame implements ActionListener{ //on crée la c
 		temp = b;							//définit le paramètre comme la température.
 		backgroundColor(temp);				//appelle la méthode backgroundColor pour changer la couleur du bouton actuel.
 	
+	// Cette méthode est utilisée pour déterminer si le plateau de jeu est dans un état gagnant.
+	private void isWon()
+	{
+		int count = 0;						//une variable de comptage.
+		for(JButton b[]: gameButtons){		//parcourt le tableau à deux dimensions pour chaque JButton
+			for(JButton c: b){
+				if(c.getBackground()==Color.BLACK){		//si la couleur actuelle du JButton est noire, alors le compte est incrémenté.
+					count++;
+				}
+			}
+		}
+		if(count == 25)									//si le décompte est égal à 25, le plateau de jeu est dans un état gagnant.
+		{
+			JOptionPane.showMessageDialog(this, "Congratulations, you have won!");		// l'utilisateur a notifié que le jeu a été gagné.
+			winCount++;																	//winCount variable incrémentée de 1.
+			wins.setText("Wins: " + winCount);											//définit le statut des gains actuels à l'utilisateur.
+			restart();																	//réinitialise le plateau de jeu actuel une fois la partie gagnée.
+		}	
+	}
