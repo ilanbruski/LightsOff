@@ -153,12 +153,21 @@ public class LightsOff extends JFrame implements ActionListener{ //on crée la c
 	//@param b JButton object.
 	private void backgroundColor(JButton b)
 	{
-		if(b.getBackground()==Color.BLACK)			//le bouton b est noir, puis il est changé en jaune, sinon il est
-		{											//changé en noir.
+		if(b.getBackground()==Color.BLACK){			//le bouton b est noir, puis il est changé en jaune, sinon il est changé en noir.							
 			b.setBackground(Color.YELLOW);
 		}
-		else
-		{
+		else{
 			b.setBackground(Color.BLACK);
 		}
 	}
+	//Cette méthode génère un nombre aléatoire pour chaque bouton dans un tableau à deux dimensions et changera la couleur du bouton si l'entier généré aléatoirement est égal à 2
+	private void randomSetting(){
+		for(JButton b[]: gameButtons)					//se déplace à travers chaque JButton dans le tableau à deux dimensions.
+		{
+			for(JButton c : b){
+				int random = (int)(Math.random()*6);	//génère un nombre aléatoire entre 0 et 5.
+				if(random == 2){							//si le nombre est égal à 2, la couleur du bouton est modifiée.
+					backgroundColor(c);
+				}
+			}
+		}
