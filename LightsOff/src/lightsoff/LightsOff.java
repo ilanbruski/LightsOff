@@ -192,9 +192,21 @@ public class LightsOff extends JFrame implements ActionListener{ //on crée la c
 		}
 		if(count == 25)									//si le décompte est égal à 25, le plateau de jeu est dans un état gagnant.
 		{
-			JOptionPane.showMessageDialog(this, "Congratulations, you have won!");		// l'utilisateur a notifié que le jeu a été gagné.
+			JOptionPane.showMessageDialog(this, "Bravo, vous avez gagné!");		// l'utilisateur a notifié que le jeu a été gagné.
 			winCount++;																	//winCount variable incrémentée de 1.
-			wins.setText("Wins: " + winCount);											//définit le statut des gains actuels à l'utilisateur.
+			wins.setText("Victoires: " + winCount);											//définit le statut des gains actuels à l'utilisateur.
 			restart();																	//réinitialise le plateau de jeu actuel une fois la partie gagnée.
 		}	
 	}
+	//Cette méthode est utilisée pour redémarrer le plateau de jeu actuel et utilise la méthode backgroundColor..
+	private void restart(){
+		for(JButton b[]: gameButtons){					//se déplace dans le tableau à deux dimensions pour chaque JButton.
+			for(JButton c : b){
+				int random = (int)(Math.random()*4);	//génère aléatoirement un nombre compris entre 0 et 3.
+				if(random == 2){							//si le nombre est deux, la couleur actuelle du JButton est modifiée.
+					backgroundColor(c);
+				}
+			}
+		}
+	}
+}
