@@ -171,3 +171,11 @@ public class LightsOff extends JFrame implements ActionListener{ //on crée la c
 				}
 			}
 		}
+	}
+	//Cette méthode utilise le backgroundColor pour changer la couleur du JButton envoyé en paramètre
+	//@param b JButton object.
+	private void manualSetting(JButton b){
+		JButton temp = new JButton();		//crée un JButton temporaire.
+		temp = b;							//définit le paramètre comme la température.
+		backgroundColor(temp);				//appelle la méthode backgroundColor pour changer la couleur du bouton actuel.
+	
