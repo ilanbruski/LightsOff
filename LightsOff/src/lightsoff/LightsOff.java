@@ -1,4 +1,3 @@
-
 package lightsoff;
 
 import java.awt.BorderLayout;
@@ -13,14 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class LightsOff extends JFrame implements ActionListener //on crée la classe lightsoff
-{
-
-	public static void main(String[] args) 
-	{
+public class LightsOff extends JFrame implements ActionListener{ //on crée la classe lightsoff
+	public static void main(String[] args){
 		LightsOff light = new LightsOff();		//créarion d'un nouvel objet, qui est un jeu
 		light.setVisible(true);					//rend l'objet lightsoff visible
-
 	}
 	
 	//disposition du plateau de jeu privé
@@ -28,8 +23,8 @@ public class LightsOff extends JFrame implements ActionListener //on crée la cl
 	private JButton manual;								//un bouton pour le "Enter Manual Setup".
 	private JLabel wins;								//un label utilisé pour indiquer à l'utilisateur combien de victoires il a actuellement.
 	private int winCount;								//une variable de comptage pour contenir le nombre actuel de victoires.
-        public LightsOff()
-	{
+        public LightsOff(){
+	
 		winCount = 0;                                                   //définit la variable winCount sur 0.
 		//Termine le programme lorsque l'utilisateur ferme le JFrame.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,7 +34,6 @@ public class LightsOff extends JFrame implements ActionListener //on crée la cl
 		setSize(500, 500);
 		
 		JPanel mainPanel = new JPanel();				//Le panneau actuel dans lequel tout est placé.
-		
 		mainPanel.setLayout(new BorderLayout());		//définit la disposition du mainPanel.
 		
 		//Boutons
@@ -48,15 +42,13 @@ public class LightsOff extends JFrame implements ActionListener //on crée la cl
 		buttonPanel.setLayout(new GridLayout(5,5));		//définit la disposition des boutons.					
 		
 		for(int i = 0; i<5; i++){						//ces deux boucles ajouteront chaque bouton dans le tableau à deux dimensions.
-                
 			for(int j = 0; j<5; j++){
 				int random = (int)(Math.random()*3);	//configure une variable pour un nombre aléatoire, de sorte que les lumières (boutons) seront allumées au hasard.
 				JButton button = new JButton();			//crée un nouvel objet JButton.
 				gameButtons[i][j] = button;				//ajoute le bouton au tableau.
 				button.setName(""+i+j);					//définit le nom de chaque bouton en conséquence où ils apparaissent sur le plateau de jeu.
 				button.setBackground(Color.BLACK);		//définit chaque bouton sur noir, désactivé.
-				if(random == 2)							//utilise la variable aléatoire pour changer la couleur du bouton en jaune, activé.
-				{
+				if(random == 2){							//utilise la variable aléatoire pour changer la couleur du bouton en jaune, activé.
 					backgroundColor(button);
 				}
 				button.addActionListener(this);			//ajoute un actionlistener à chaque bouton.
@@ -74,3 +66,18 @@ public class LightsOff extends JFrame implements ActionListener //on crée la cl
 		manual.setName("Manual");						//définit le nom du bouton de configuration manuelle.
 		manual.addActionListener(this);					//ajoute un actionlistener.
 		
+		JPanel controls = new JPanel();			  		//Crée un nouveau JPanel qui contiendra les différents boutons de contrôle.
+		controls.setLayout(new GridLayout(1,2));		//définit la disposition des contrôles JPanel.
+		controls.add(random,"South");					//ajoute le bouton de randomisation aux contrôles JPanel.
+		controls.add(manual,"South");					//ajoute le bouton manuel aux contrôles Jpanel.
+		mainPanel.add(controls,"South");				//ajoute les contrôles JPanel au mainPanel.
+		
+		//Labels
+		JPanel label = new JPanel();					//crée un nouveau JPanel pour les étiquettes à ajouter au plateau de jeu.
+		label.setLayout(new GridLayout(1,1));			//définit la disposition des étiquettes JPanel.
+		label.add(wins = new JLabel());					//ajoute le label wins au label JPanel.
+		wins.setText("Wins: " + winCount);				//définit le texte de l'étiquette de victoires.
+		mainPanel.add(label, "North");					//le label JPanel est ajouté au mainPanel.
+		
+		setContentPane(mainPanel);						//définit le volet de contenu du cadre.
+	}
