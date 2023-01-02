@@ -1,3 +1,4 @@
+
 package lightsoff;
 
 import java.awt.BorderLayout;
@@ -12,200 +13,275 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class LightsOff extends JFrame implements ActionListener{ //on crée la classe lightsoff
-	public static void main(String[] args){
-		LightsOff light = new LightsOff();		//créarion d'un nouvel objet, qui est un jeu
-		light.setVisible(true);					//rend l'objet lightsoff visible
+public class LightsOff extends JFrame implements ActionListener
+{
+
+	public static void main(String[] args) 
+	{
+		LightsOff light = new LightsOff();		//Creates a new LightsOut object, which is a new game.
+		light.setVisible(true);					//sets the LightsOut object to visible.
+
 	}
 	
-	//disposition du plateau de jeu privé
-	private JButton[][] gameButtons;					//ce tableau à deux dimensions contiendra une référence pour tous les boutons du tableau.
-	private JButton manual;								//un bouton pour le "Enter Manual Setup".
-	private JLabel wins;								//un label utilisé pour indiquer à l'utilisateur combien de victoires il a actuellement.
-	private int winCount;								//une variable de comptage pour contenir le nombre actuel de victoires.
-        public LightsOff(){
-	
-		winCount = 0;                                                   //définit la variable winCount sur 0.
-		//Termine le programme lorsque l'utilisateur ferme le JFrame.
+	//private GameBoard boardLayout;
+	private JButton[][] gameButtons;					//this two dimensional array will hold a reference the all of the buttons on the board.
+	private JButton manual;								//a button for the "Enter Manual Setup".
+	private JLabel wins;								//a label used to tell the user how many wins they currently have.
+	private int winCount;								//a count variable to hold the current number of wins.
+        public LightsOff()
+	{
+		winCount = 0;                                                   //sets the winCount variable to 0.
+		//Terminates the program when the user closes the JFrame.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//Définit le titre et la taille du JFrame.
+		//Sets title and size of the JFrame.
 		setTitle("Lights Out");
 		setSize(500, 500);
 		
-		JPanel mainPanel = new JPanel();				//Le panneau actuel dans lequel tout est placé.
-		mainPanel.setLayout(new BorderLayout());		//définit la disposition du mainPanel.
+		JPanel mainPanel = new JPanel();				//The current panel that everything is placed in.
 		
-		//Boutons
-		JPanel buttonPanel = new JPanel();				//un nouveau panneau pour contenir tous les boutons du plateau de jeu.
-		gameButtons = new JButton[5][5];				//crée un nouveau tableau bidimensionnel qui contiendra 25 boutons.
-		buttonPanel.setLayout(new GridLayout(5,5));		//définit la disposition des boutons.					
+		mainPanel.setLayout(new BorderLayout());		//sets the layout of the mainPanel.
 		
-		for(int i = 0; i<5; i++){						//ces deux boucles ajouteront chaque bouton dans le tableau à deux dimensions.
-			for(int j = 0; j<5; j++){
-				int random = (int)(Math.random()*3);	//configure une variable pour un nombre aléatoire, de sorte que les lumières (boutons) seront allumées au hasard.
-				JButton button = new JButton();			//crée un nouvel objet JButton.
-				gameButtons[i][j] = button;				//ajoute le bouton au tableau.
-				button.setName(""+i+j);					//définit le nom de chaque bouton en conséquence où ils apparaissent sur le plateau de jeu.
-				button.setBackground(Color.BLACK);		//définit chaque bouton sur noir, désactivé.
-				if(random == 2){							//utilise la variable aléatoire pour changer la couleur du bouton en jaune, activé.
+		//Buttons
+		JPanel buttonPanel = new JPanel();				//a new panel to hold all of the buttons on the game board.
+		gameButtons = new JButton[5][5];				//creates a new two dimensional array that will hold 25 buttons.
+		buttonPanel.setLayout(new GridLayout(5,5));		//sets the layout for the buttons.					
+		
+		for(int i = 0; i<5; i++)						//these two loops will add each button into the two dimensional array.
+		{
+			for(int j = 0; j<5; j++)
+			{
+				int random = (int)(Math.random()*3);	//sets up a variable for a random number, so the lights(buttons) will randomly be turned on.
+				JButton button = new JButton();			//creats a new JButton object.
+				gameButtons[i][j] = button;				//adds the button to the array.
+				button.setName(""+i+j);					//sets up the name of each button accordingly where they appear on the game board.
+				button.setBackground(Color.BLACK);		//sets each button to black, turned off.
+				if(random == 2)							//uses the random variable to change the color of the button to yellow, turned on.
+				{
 					backgroundColor(button);
 				}
-				button.addActionListener(this);			//ajoute un actionlistener à chaque bouton.
-				buttonPanel.add(button);				//ajoute le bouton au buttonPanel.
+				button.addActionListener(this);			//adds an actionlistener to each button.
+				buttonPanel.add(button);				//adds the button to the buttonPanel.
+			
 			}
 		}
 		
-		mainPanel.add(buttonPanel, "Center");			//ajoute le buttonPanel au mainPanel.
+		mainPanel.add(buttonPanel, "Center");			//adds the buttonPanel to the mainPanel.
 		
-		//Crée les boutons utilisés pour les différents contrôles.
-		JButton random = new JButton("Randomize");		//Crée un nouveau bouton qui sera utilisé pour que les lumières aléatoires s'allument ou s'éteignent.
-		random.setName("Random");						//définit le nom du bouton Randomizen.
-		random.addActionListener(this);					//ajoute un actionlistener.
-		manual = new JButton("Enter Manual Setup");		//Crée un nouveau bouton qui sera utilisé par l'utilisateur pour changer manuellement le tableau.
-		manual.setName("Manual");						//définit le nom du bouton de configuration manuelle.
-		manual.addActionListener(this);					//ajoute un actionlistener.
+		//Creates the buttons used for different controls.
+		JButton random = new JButton("Randomize");		//Creates a new button that will be used for random lights to turn either on or off.
+		random.setName("Random");						//sets the name of the Randomize button.
+		random.addActionListener(this);					//adds an actionlistener.
+		manual = new JButton("Enter Manual Setup");		//Creates a new button that will be used for the user to manually change the board.
+		manual.setName("Manual");						//sets the name of the manual setup button.
+		manual.addActionListener(this);					//adds an actionlistener.
 		
-		JPanel controls = new JPanel();			  		//Crée un nouveau JPanel qui contiendra les différents boutons de contrôle.
-		controls.setLayout(new GridLayout(1,2));		//définit la disposition des contrôles JPanel.
-		controls.add(random,"South");					//ajoute le bouton de randomisation aux contrôles JPanel.
-		controls.add(manual,"South");					//ajoute le bouton manuel aux contrôles Jpanel.
-		mainPanel.add(controls,"South");				//ajoute les contrôles JPanel au mainPanel.
+		
+		JPanel controls = new JPanel();			  		//Creates a new JPanel that will hold the different controls buttons.
+		controls.setLayout(new GridLayout(1,2));		//sets the layout of the controls JPanel.
+		controls.add(random,"South");					//adds the randomize button to the controls JPanel.
+		controls.add(manual,"South");					//adds the manual button to the controls Jpanel.
+		
+		
+		mainPanel.add(controls,"South");				//adds the controls JPanel to the mainPanel.
 		
 		//Labels
-		JPanel label = new JPanel();					//crée un nouveau JPanel pour les labels à ajouter au plateau de jeu.
-		label.setLayout(new GridLayout(1,1));			//définit la disposition des labels JPanel.
-		label.add(wins = new JLabel());					//ajoute le label wins au label JPanel.
-		wins.setText("Wins: " + winCount);				//définit le texte de l'étiquette de victoires.
-		mainPanel.add(label, "North");					//le label JPanel est ajouté au mainPanel.
+		JPanel label = new JPanel();					//creates a new JPanel for labels to be added to the game board.
+		label.setLayout(new GridLayout(1,1));			//sets the layout of the labels JPanel.
+		label.add(wins = new JLabel());					//adds the wins label to the label JPanel.
+		wins.setText("Wins: " + winCount);				//sets the text of the wins label.
+		mainPanel.add(label, "North");					//the label JPanel is added to the mainPanel.
 		
-		setContentPane(mainPanel);						//définit le volet de contenu du cadre.
+		setContentPane(mainPanel);						//sets the content pane of the frame.
 	}
-        
-	//cette methode sera utilisée dès qu'un bouton est cliqué
+	/**
+	 * This method is used whenever
+	 * a button is clicked.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		JButton button = (JButton)e.getSource();		//obtient le bouton actuel qui a été cliqué.
-		String location = button.getName();				//obtient le nom du bouton actuel
-		if(location.equals("Random")){					//si le bouton "Aléatoire" est cliqué, alors la méthode aléatoire est appelée.
+		
+		JButton button = (JButton)e.getSource();		//gets the current button that was clicked.
+		String location = button.getName();				//gets the name of the current button
+		if(location.equals("Random"))					//if the "Randomize" button is clicked,
+		{												//then the random method is called.
 			randomSetting();
 			return;
 		}
-		if(location.equals("Manual Exit")){				//si le bouton "Quitter le mode manuel" est cliqué, le nom et le texte sont modifiés et le jeu revient à un état normal.
-			manual.setText("Enter Manual Setup");
+		if(location.equals("Manual Exit"))				//if the "Exit Manual Mode" button is clicked
+		{												//the name and text is changed and the game
+			manual.setText("Enter Manual Setup");		//returns to a normal state.
 			manual.setName("Manual");
 			return;
 		}
-		if(location.equals("Manual")){					//si le bouton "Enter Manual Setup" est cliqué, le nom et le texte sont modifiés.
+		if(location.equals("Manual"))					//if the "Enter Manual Setup" button is clicked
+		{												//then the name and text are changed.
 			manual.setText("Exit Manual Mode");
 			manual.setName("Manual Exit");
 			return;
 		}
-		if(manual.getName().equals("Manual Exit")){		//pendant que le nom du bouton manuel est défini, comme "Manual Exit", le réglage manuel sera appelé sur le bouton actuel. 
-			manualSetting(button);
+		if(manual.getName().equals("Manual Exit"))		//while the name of the manual button is set
+		{												//as "Manual Exit", the manual setting will be 
+			manualSetting(button);						//called on the current button.
 			return;
 		}
-		char colChar = location.charAt(0);				//obtient le caractère char à la position 0 du nom du bouton.
-		char rowChar = location.charAt(1);				//obtient le caractère char en position 1 du nom du bouton.
-		int col = Character.getNumericValue(colChar);	//cet int converti à partir du char de pos 0 sera utilisé comme indicateur de colonne.
-		int row = Character.getNumericValue(rowChar);	//cet int converti à partir du char de pos 0 sera utilisé comme indicateur de ligne.
+		char colChar = location.charAt(0);				//gets the char character a position 0 of the button name.
+		char rowChar = location.charAt(1);				//gets the char character a position 1 of the button name.
+		int col = Character.getNumericValue(colChar);	//this int converted from the char from pos 0 will be used a column indicator.
+		int row = Character.getNumericValue(rowChar);	//this int converted from the char from pos 0 will be used a row indicator.
 		
-		//boutons temporaires pour les emplacements adjacents à côté du bouton sélectionné.
-		JButton tempSelected = new JButton();			//un bouton temp pour le bouton sélectionné
-		JButton tempTop = new JButton();				//un bouton temporaire pour le bouton au-dessus du bouton sélectionné
-		JButton tempLeft = new JButton();				//un bouton temp pour le bouton à gauche du bouton sélectionné
-		JButton tempRight = new JButton();				//un bouton temp pour le bouton à droite du bouton sélectionné
-		JButton tempBottom = new JButton();				//un bouton temp pour le bouton sous le bouton sélectionné
+		//temporary buttons for the adjacent locations 
+		//next to the selected button.
+		JButton tempSelected = new JButton();			//a temp button for the selected button
+		JButton tempTop = new JButton();				//a temp button for the button above the selected button
+		JButton tempLeft = new JButton();				//a temp button for the button left to the selected button
+		JButton tempRight = new JButton();				//a temp button for the button right to the selected button
+		JButton tempBottom = new JButton();				//a temp button for the button below the selected button
 		
-		tempSelected = gameButtons[col][row];			//obtient le bouton actuel sélectionné et le stocke dans la temp.
-		backgroundColor(tempSelected);					//appelle la méthode backgroundColor pour changer la couleur du bouton.
+		tempSelected = gameButtons[col][row];			//gets the current button selected and stores it in the temp.
+		backgroundColor(tempSelected);					//calls the backgroundColor method to change the color of the button.
 		
-		//chaque bouton est tenté, mais s'il dépasse le tableau, il est intercepté et rien n'est fait.
-		try {
-			tempTop = gameButtons[col-1][row];			//récupère le bouton qui se trouve au-dessus du bouton sélectionné et le stocke dans temp.
-			backgroundColor(tempTop);					//appelle la méthode backgroundColor pour changer la couleur du bouton.
+		//each button is attempted, but if it exceeds the Array, then it is caught and nothing is done.
+		try
+		{
+			tempTop = gameButtons[col-1][row];			//get the button that is above the selected button and stores it in temp.
+			backgroundColor(tempTop);					//calls the backgroundColor method to change the color of the button.
 		}
-		catch(ArrayIndexOutOfBoundsException i){	
+		catch(ArrayIndexOutOfBoundsException i)
+		{
+			
 		}
-		try{
-			tempLeft = gameButtons[col][row-1];			//récupère le bouton qui reste au bouton sélectionné et le stocke dans temp.
-			backgroundColor(tempLeft);					//appelle la méthode backgroundColor pour changer la couleur du bouton.
+		
+		try
+		{
+			tempLeft = gameButtons[col][row-1];			//get the button that is left to the selected button and stores it in temp.
+			backgroundColor(tempLeft);					//calls the backgroundColor method to change the color of the button.
 		}
-		catch(ArrayIndexOutOfBoundsException i){	
+		catch(ArrayIndexOutOfBoundsException i)
+		{
+			
 		}
-		try{
-			tempRight = gameButtons[col][row+1];		//obtenir le bouton qui correspond au bouton sélectionné et le stocker dans temp.
-			backgroundColor(tempRight);					//appelle la méthode backgroundColor pour changer la couleur du bouton.
+		try
+		{
+			tempRight = gameButtons[col][row+1];		//get the button that is right to the selected button and stores it in temp.
+			backgroundColor(tempRight);					//calls the backgroundColor method to change the color of the button.
 		}
-		catch(ArrayIndexOutOfBoundsException i){	
+		catch(ArrayIndexOutOfBoundsException i)
+		{
+			
 		}
-		try{
-			tempBottom = gameButtons[col+1][row];		//récupère le bouton qui se trouve sous le bouton sélectionné et le stocke dans temp.
-			backgroundColor(tempBottom);				//appelle la méthode backgroundColor pour changer la couleur du bouton.
+		try
+		{
+			tempBottom = gameButtons[col+1][row];		//get the button that is below the selected button and stores it in temp.
+			backgroundColor(tempBottom);				//calls the backgroundColor method to change the color of the button.
 		}
-		catch(ArrayIndexOutOfBoundsException i){	
+		catch(ArrayIndexOutOfBoundsException i)
+		{
+			
 		}
-		isWon();										//la méthode isWon est appelée pour voir si la partie est gagnée ou non, c'est-à-dire si toutes les lumières sont éteintes.
+	
+		isWon();										//the isWon method is called to see whether or not the game has been won,
+														//in other words if all of the lights have been turned off.
 	}
 	
-	//Modifie la couleur du bouton envoyé en tant que paramètre en jaune ou en noir, selon la couleur actuelle du paramètre. 
-	//@param b JButton object.
+
+	/**
+	 * Changes the color of the button sent in
+	 * as a parameter to either yellow or black, 
+	 * depending on what the current color of the
+	 * parameter is.
+	 * @param b JButton object.
+	 */
 	private void backgroundColor(JButton b)
 	{
-		if(b.getBackground()==Color.BLACK){			//le bouton b est noir, puis il est changé en jaune, sinon il est changé en noir.							
+		if(b.getBackground()==Color.BLACK)			//the button b is black, then it is changed to yellow, otherwise it is
+		{											//changed to black.
 			b.setBackground(Color.YELLOW);
 		}
-		else{
+		else
+		{
 			b.setBackground(Color.BLACK);
 		}
 	}
-	//Cette méthode génère un nombre aléatoire pour chaque bouton dans un tableau à deux dimensions et changera la couleur du bouton si l'entier généré aléatoirement est égal à 2
-	private void randomSetting(){
-		for(JButton b[]: gameButtons)					//se déplace à travers chaque JButton dans le tableau à deux dimensions.
+	/**
+	 * This method generates a random number
+	 * for each button in a two dimensional array
+	 * and will change the color of the button 
+	 * if the randomly generated integer equals 
+	 * 2.
+	 */
+	private void randomSetting()
+	{
+		for(JButton b[]: gameButtons)					//moves through each JButton in the two dimensional array.
 		{
-			for(JButton c : b){
-				int random = (int)(Math.random()*6);	//génère un nombre aléatoire entre 0 et 5.
-				if(random == 2){							//si le nombre est égal à 2, la couleur du bouton est modifiée.
+			for(JButton c : b)
+			{
+				int random = (int)(Math.random()*6);	//generates a random number between 0 and 5.
+				if(random == 2)							//if the number equals 2, the color of button is changed.
+				{
 					backgroundColor(c);
 				}
+				
 			}
 		}
 	}
-	//Cette méthode utilise le backgroundColor pour changer la couleur du JButton envoyé en paramètre
-	//@param b JButton object.
-	private void manualSetting(JButton b){
-		JButton temp = new JButton();		//crée un JButton temporaire.
-		temp = b;							//définit le paramètre comme la température.
-		backgroundColor(temp);				//appelle la méthode backgroundColor pour changer la couleur du bouton actuel.
-	
-	// Cette méthode est utilisée pour déterminer si le plateau de jeu est dans un état gagnant.
+	/**
+	 * This method utilizes the backgroundColor
+	 * method to change the color of the JButton
+	 * sent in as a parameter.
+	 * @param b JButton object.
+	 */
+	private void manualSetting(JButton b)
+	{
+		JButton temp = new JButton();		//creates a temporary JButton.
+		temp = b;							//sets the parameter as the temp.
+		backgroundColor(temp);				//calls the backgroundColor method 
+	}										//to change the color of the current button.
+	/**
+	 * This method is used to determine
+	 * if the game board is in a winning
+	 * state.
+	 */
 	private void isWon()
 	{
-		int count = 0;						//une variable de comptage.
-		for(JButton b[]: gameButtons){		//parcourt le tableau à deux dimensions pour chaque JButton
-			for(JButton c: b){
-				if(c.getBackground()==Color.BLACK){		//si la couleur actuelle du JButton est noire, alors le compte est incrémenté.
+		int count = 0;						//a count variable.
+		for(JButton b[]: gameButtons)		//moves through the two dimensional array for each
+		{									//JButton.
+			for(JButton c: b)
+			{
+				if(c.getBackground()==Color.BLACK)		//if the current JButton color is black, then the count is incremented.
+				{
 					count++;
 				}
 			}
 		}
-		if(count == 25)									//si le décompte est égal à 25, le plateau de jeu est dans un état gagnant.
+		if(count == 25)									//if the count equals 25 then the game board is in a winning state.
 		{
-			JOptionPane.showMessageDialog(this, "Bravo, vous avez gagné!");		// l'utilisateur a notifié que le jeu a été gagné.
-			winCount++;																	//winCount variable incrémentée de 1.
-			wins.setText("Victoires: " + winCount);											//définit le statut des gains actuels à l'utilisateur.
-			restart();																	//réinitialise le plateau de jeu actuel une fois la partie gagnée.
+			JOptionPane.showMessageDialog(this, "Congratulations, you have won!");		//user notified the game has been won.
+			winCount++;																	//winCount variable incremented by 1.
+			wins.setText("Wins: " + winCount);											//sets status of current wins to the user.
+			restart();																	//resets the current game board after the game has been won.
 		}	
 	}
-	//Cette méthode est utilisée pour redémarrer le plateau de jeu actuel et utilise la méthode backgroundColor..
-	private void restart(){
-		for(JButton b[]: gameButtons){					//se déplace dans le tableau à deux dimensions pour chaque JButton.
-			for(JButton c : b){
-				int random = (int)(Math.random()*4);	//génère aléatoirement un nombre compris entre 0 et 3.
-				if(random == 2){							//si le nombre est deux, la couleur actuelle du JButton est modifiée.
+	/**
+	 * This method is used to
+	 * restart the current game board and
+	 * utilizes the backgroundColor method.
+	 * 
+	 */
+	private void restart()
+	{
+		for(JButton b[]: gameButtons)					//moves through the two dimensional array for each JButton.
+		{
+			for(JButton c : b)
+			{
+				int random = (int)(Math.random()*4);	//randomly generates a number between 0 and 3.
+				if(random == 2)							//if the number is two, the current JButton color is changed.
+				{
 					backgroundColor(c);
 				}
+				
 			}
 		}
 	}
