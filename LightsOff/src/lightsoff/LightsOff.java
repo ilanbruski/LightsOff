@@ -1,20 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package lightsoff;
+//bibliotèque des évenements (imports divers)
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-/**
- *
- * @author ilanb
- */
-public class LightsOff {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
-}
+public class LightsOff extends JFrame implements ActionListener//on crée la classe lightsoff
+{
+
+	public static void main(String[] args) 
+	{
+		LightsOff light = new LightsOff();		//crée un nouvel objet lightsoff qui est un jeu
+		light.setVisible(true);					//rend l'objet lightsoff visible
+	}
